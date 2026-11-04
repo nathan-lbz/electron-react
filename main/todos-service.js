@@ -36,6 +36,18 @@ function createTodosService(dataDir) {
       return todo;
     },
 
+    async toggle(id){
+      const todos = await readAll();
+      for ( const todo of todos){
+        if ( todo.id === id ){
+          todo.done = !task.done;
+          todos.push(todo);
+          await writeAll(todos);
+          return todo;
+        }
+        throw new Error('tâche introuvable')
+      }
+    }
     // TODO 1 : toggle(id) -> inverse `done`, renvoie la tâche, erreur si introuvable
     // TODO 2 : remove(id) -> supprime la tâche, renvoie true si elle existait
     // TODO 5 (bonus) : clearDone() -> supprime toutes les tâches terminées, renvoie le nombre supprimé

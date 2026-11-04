@@ -5,6 +5,7 @@ export default function TodoItem({ todo }) {
   return (
     <li>
       <span className={todo.done ? 'done' : ''}>{todo.text}</span>
+      <input type="checkbox"></input>
     </li>
   );
 }
